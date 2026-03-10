@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIM Creations — Van Idee tot Realisatie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+/* =============================================
+   HANDLEIDING VOOR AFBEELDINGEN
+   =============================================
+   Vervang elke src="..." door het pad naar jouw foto.
+   Voorbeeld: src="fotos/spandoek1.jpg"
+   Zorg dat de fotomap naast dit HTML-bestand staat.
+   ============================================= */
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --zwart:   #181816;
+  --wit:     #ffffff;
+  --papier:  #f5f2ed;
+  --warm:    #eae5dc;
+  --goud:    #c8832a;
+  --goud2:   #a86820;
+  --grijs:   #888278;
+  --rand:    #dbd6cc;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--papier);
+  color: var(--zwart);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAVIGATIE ───────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(24,24,22,.97);
+  backdrop-filter: blur(10px);
+  height: 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 5vw;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav-logo {
+  display: flex; align-items: center;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 42px; width: auto;
+  /* Logo afbeelding — vervang door: src="logo.png" */
+}
+.nav-logo-tekst {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 22px; font-weight: 400;
+  color: var(--wit); letter-spacing: .5px;
+}
+.nav-logo-tekst span { color: var(--goud); }
+
+.nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.5); text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--wit); }
+.nav-links .btn-nav {
+  background: var(--goud); color: var(--wit) !important;
+  padding: 8px 18px; border-radius: 3px;
+  transition: background .2s !important;
+}
+.nav-links .btn-nav:hover { background: var(--goud2) !important; }
+
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--wit); border-radius: 2px; }
+
+.mobiel-menu {
+  display: none; position: fixed; inset: 0; z-index: 99;
+  background: var(--zwart);
+  flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+}
+.mobiel-menu.open { display: flex; }
+.mobiel-menu a {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px; font-weight: 300;
+  color: var(--wit); text-decoration: none; transition: color .2s;
+}
+.mobiel-menu a:hover { color: var(--goud); }
+.mobiel-sluit {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none; color: var(--wit); font-size: 26px; cursor: pointer;
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+#home {
+  min-height: 100vh;
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+  padding: 0 5vw 80px;
+}
+
+/* =============================================
+   HERO ACHTERGROND FOTO
+   Vervang de gradient hieronder door:
+   background-image: url('fotos/hero.jpg');
+   background-size: cover;
+   background-position: center;
+   ============================================= */
+.hero-foto {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1e1e1c 0%, #252318 100%);
+  /* background-image: url('fotos/hero.jpg'); background-size: cover; background-position: center; */
+}
+.hero-foto::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(18,18,16,.85) 0%, rgba(18,18,16,.3) 60%, transparent 100%);
+}
+
+.hero-inhoud {
+  position: relative; z-index: 2;
+  max-width: 620px;
+  animation: opKomen .9s ease both;
+}
+.hero-label {
+  display: inline-block; margin-bottom: 18px;
+  font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--goud); border: 1px solid rgba(200,131,42,.4);
+  padding: 5px 14px; border-radius: 20px;
+}
+.hero-inhoud h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(42px, 7vw, 86px); font-weight: 300;
+  color: var(--wit); line-height: 1.0; margin-bottom: 20px;
+}
+.hero-inhoud h1 em { font-style: italic; color: var(--goud); }
+.hero-inhoud p {
+  font-size: 15px; color: rgba(255,255,255,.5);
+  max-width: 420px; line-height: 1.85; margin-bottom: 36px;
+}
+.hero-knoppen { display: flex; gap: 12px; flex-wrap: wrap; }
+.knop-goud {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--goud); color: var(--wit);
+  padding: 13px 28px; border-radius: 3px;
+  font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  text-decoration: none; font-weight: 500;
+  transition: background .2s, transform .15s;
+}
+.knop-goud:hover { background: var(--goud2); transform: translateY(-1px); }
+.knop-leeg {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.7);
+  padding: 13px 28px; border-radius: 3px;
+  font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.knop-leeg:hover { border-color: var(--goud); color: var(--wit); transform: translateY(-1px); }
+
+/* ── DIENSTEN BALK ───────────────────────────────────────── */
+.diensten-balk {
+  background: var(--zwart);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.dienst {
+  padding: 32px 24px;
+  border-right: 1px solid rgba(255,255,255,.06);
+  transition: background .25s;
+}
+.dienst:last-child { border-right: none; }
+.dienst:hover { background: rgba(200,131,42,.06); }
+.dienst-icoon { font-size: 22px; margin-bottom: 12px; }
+.dienst h3 { font-size: 13px; font-weight: 500; color: var(--wit); margin-bottom: 5px; }
+.dienst p { font-size: 11px; color: rgba(255,255,255,.36); line-height: 1.65; }
+
+/* ── SECTIES ALGEMEEN ────────────────────────────────────── */
+section { padding: 90px 5vw; }
+.sectie-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--goud); margin-bottom: 10px; }
+h2.sectie-titel {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(28px, 4vw, 50px); font-weight: 400; line-height: 1.15; margin-bottom: 16px;
+}
+.sectie-intro { font-size: 15px; color: var(--grijs); max-width: 520px; line-height: 1.85; margin-bottom: 48px; }
+
+/* ── PORTFOLIO ──────────────────────────────────────────── */
+#portfolio { background: var(--papier); }
+
+.categorie-tabs {
+  display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 32px;
+}
+.cat-knop {
+  padding: 7px 15px; border-radius: 20px;
+  font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
+  border: 1px solid var(--rand); background: transparent;
+  color: var(--grijs); cursor: pointer;
+  transition: all .2s; font-family: inherit;
+}
+.cat-knop.actief, .cat-knop:hover {
+  background: var(--goud); border-color: var(--goud); color: var(--wit);
+}
+
+.cat-paneel { display: none; }
+.cat-paneel.actief { display: block; animation: opKomen .35s ease both; }
+.cat-paneel h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px; font-weight: 400; margin-bottom: 5px;
+}
+.cat-paneel .cat-omschrijving { font-size: 13px; color: var(--grijs); margin-bottom: 20px; }
+
+/* FOTO RASTER */
+.foto-raster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+.foto-item {
+  position: relative; overflow: hidden; border-radius: 3px;
+  aspect-ratio: 4/3; background: var(--warm);
+  cursor: pointer;
+}
+
+/* =============================================
+   FOTO'S TOEVOEGEN IN HET RASTER
+   Voeg binnen .foto-item een img-tag toe:
+   <img src="fotos/spandoek1.jpg" alt="Spandoek">
+   De foto vult automatisch het vakje.
+   ============================================= */
+.foto-item img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .4s ease;
+}
+.foto-item:hover img { transform: scale(1.04); }
+
+/* Placeholder als er nog geen foto is */
+.foto-item .placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+  color: var(--grijs); pointer-events: none;
+}
+.foto-item .placeholder-icoon { font-size: 28px; opacity: .3; }
+.foto-item .placeholder-tekst { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: .4; }
+
+/* kleurvariatie placeholders */
+.foto-item:nth-child(6n+1) { background: #ddd5c3; }
+.foto-item:nth-child(6n+2) { background: #cdd3cb; }
+.foto-item:nth-child(6n+3) { background: #d3cbcb; }
+.foto-item:nth-child(6n+4) { background: #c7ccd3; }
+.foto-item:nth-child(6n+5) { background: #d3d0c7; }
+.foto-item:nth-child(6n+6) { background: #cbd3cc; }
+
+.foto-overlay {
+  position: absolute; inset: 0;
+  background: rgba(24,24,22,.72);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .25s;
+}
+.foto-item:hover .foto-overlay { opacity: 1; }
+.foto-overlay span { color: var(--wit); font-size: 24px; }
+
+/* Lightbox */
+#lightbox {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(8,8,8,.96);
+  display: none; align-items: center; justify-content: center;
+}
+#lightbox.open { display: flex; }
+.lb-binnen {
+  position: relative;
+  max-width: 90vw; max-height: 90vh;
+}
+#lb-foto {
+  max-width: 88vw; max-height: 82vh;
+  border-radius: 3px; display: block;
+  object-fit: contain;
+}
+.lb-leeg {
+  width: min(720px,85vw); height: min(500px,70vh);
+  background: #262422; border-radius: 3px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  color: rgba(255,255,255,.2);
+}
+.lb-sluit {
+  position: absolute; top: -44px; right: 0;
+  background: none; border: none; color: var(--wit);
+  font-size: 24px; cursor: pointer; opacity: .6; transition: opacity .2s;
+}
+.lb-sluit:hover { opacity: 1; }
+.lb-onderschrift {
+  position: absolute; bottom: -38px; left: 0; right: 0;
+  text-align: center; color: rgba(255,255,255,.4);
+  font-size: 12px; letter-spacing: 1px;
+}
+
+/* ── OVER ONS ────────────────────────────────────────────── */
+#over { background: var(--warm); }
+.over-raster {
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 72px; align-items: center;
+}
+.over-foto-kader {
+  position: relative;
+}
+.over-foto-kader::before {
+  content: '';
+  position: absolute; top: 16px; left: -16px;
+  width: 100%; height: 100%;
+  border: 2px solid rgba(200,131,42,.25); border-radius: 3px; z-index: 0;
+}
+.over-foto {
+  position: relative; z-index: 1;
+  aspect-ratio: 3/4; border-radius: 3px; overflow: hidden;
+  background: var(--rand);
+}
+.over-foto img {
+  width: 100%; height: 100%; object-fit: cover;
+  /* Vervang door: src="fotos/portret.jpg" */
+}
+/* Placeholder portret */
+.over-foto .placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  color: var(--grijs);
+}
+.over-foto .placeholder-icoon { font-size: 44px; opacity: .2; }
+.over-foto .placeholder-tekst { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: .35; }
+
+.over-tekst blockquote {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px; font-style: italic; font-weight: 300;
+  color: var(--goud); line-height: 1.55;
+  margin: 22px 0; padding-left: 16px;
+  border-left: 2px solid var(--goud);
+}
+.over-tekst p { font-size: 15px; color: var(--grijs); line-height: 1.85; margin-bottom: 12px; }
+.over-tekst strong { color: var(--zwart); }
+
+.stats { display: flex; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+.stat strong {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 38px; font-weight: 300; color: var(--goud); line-height: 1;
+}
+.stat span { font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grijs); }
+
+.labels { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 24px; }
+.label-tag {
+  padding: 5px 14px; border: 1px solid var(--rand); border-radius: 20px;
+  font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--grijs); background: var(--wit);
+}
+
+/* ── CONTACT ─────────────────────────────────────────────── */
+#contact { background: var(--papier); }
+.contact-raster {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.contact-info p { font-size: 15px; color: var(--grijs); line-height: 1.85; margin-bottom: 28px; }
+.contact-lijst { list-style: none; }
+.contact-lijst li {
+  display: flex; gap: 13px; align-items: flex-start;
+  padding: 13px 0; border-bottom: 1px solid var(--rand);
+  font-size: 14px; color: var(--zwart);
+}
+.contact-lijst li:last-child { border-bottom: none; }
+.contact-lijst .icoon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+.contact-lijst a { color: var(--goud); text-decoration: none; }
+.contact-lijst a:hover { text-decoration: underline; }
+
+.sociaal-rij { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+.sociaal-knop {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--wit); border: 1px solid var(--rand);
+  padding: 10px 18px; border-radius: 3px;
+  font-size: 12px; font-weight: 500; color: var(--zwart);
+  text-decoration: none;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.sociaal-knop:hover { border-color: var(--goud); color: var(--goud); transform: translateY(-2px); }
+
+/* Formulier */
+.formulier { display: flex; flex-direction: column; gap: 14px; }
+.veld { display: flex; flex-direction: column; gap: 5px; }
+.veld label { font-size: 10.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grijs); }
+.veld input, .veld textarea, .veld select {
+  background: var(--wit); border: 1px solid var(--rand);
+  border-radius: 3px; padding: 12px 14px;
+  font-family: inherit; font-size: 14px; color: var(--zwart);
+  outline: none; transition: border-color .2s; resize: none; appearance: none;
+}
+.veld input:focus, .veld textarea:focus, .veld select:focus { border-color: var(--goud); }
+.veld textarea { min-height: 115px; }
+.veld-rij { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.verstuur-knop {
+  background: var(--goud); color: var(--wit); border: none;
+  padding: 13px 32px; border-radius: 3px;
+  font-family: inherit; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  cursor: pointer; transition: background .2s, transform .15s; align-self: flex-start;
+}
+.verstuur-knop:hover { background: var(--goud2); transform: translateY(-1px); }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: var(--zwart);
+  padding: 56px 5vw 26px;
+}
+.footer-boven {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.07);
+  flex-wrap: wrap; gap: 36px;
+}
+.footer-logo-tekst {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px; font-weight: 400; color: var(--wit); text-decoration: none;
+}
+.footer-logo-tekst span { color: var(--goud); }
+.footer-merk p { font-size: 13px; color: rgba(255,255,255,.3); margin-top: 8px; max-width: 240px; line-height: 1.7; }
+
+.footer-kolom h4 { font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 13px; }
+.footer-kolom ul { list-style: none; }
+.footer-kolom ul li { margin-bottom: 8px; }
+.footer-kolom ul li a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .2s; }
+.footer-kolom ul li a:hover { color: var(--goud); }
+
+.footer-sociaal h4 { font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 13px; }
+.sociaal-icoontjes { display: flex; gap: 8px; }
+.sociaal-icoontjes a {
+  width: 38px; height: 38px; border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.42); text-decoration: none; font-size: 15px;
+  transition: all .2s;
+}
+.sociaal-icoontjes a:hover { border-color: var(--goud); color: var(--goud); background: rgba(200,131,42,.07); }
+
+.footer-onder {
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 8px;
+}
+.footer-onder p { font-size: 11px; color: rgba(255,255,255,.16); }
+.footer-onder a { color: rgba(200,131,42,.5); text-decoration: none; }
+.footer-onder a:hover { color: var(--goud); }
+
+/* ── ANIMATIES & REVEAL ─────────────────────────────────── */
+@keyframes opKomen {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.onzichtbaar { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+.onzichtbaar.zichtbaar { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .diensten-balk { grid-template-columns: repeat(2, 1fr); }
+  .over-raster { grid-template-columns: 1fr; gap: 40px; }
+  .over-foto-kader { max-width: 300px; }
+  .contact-raster { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 600px) {
+  section { padding: 68px 5vw; }
+  .hero-knoppen { flex-direction: column; }
+  .diensten-balk { grid-template-columns: 1fr 1fr; }
+  .foto-raster { grid-template-columns: repeat(2, 1fr); }
+  .veld-rij { grid-template-columns: 1fr; }
+  .footer-boven { flex-direction: column; }
+  .stats { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVIGATIE
+═══════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <!--
+      LOGO:
+      Als je een logo-afbeelding hebt, gebruik dit:
+      <img src="logo.png" alt="DIM Creations">
+
+      Zonder logo, gebruik gewone tekst (staat er nu):
+    -->
+    <span class="nav-logo-tekst">DIM <span>Creations</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#over">Over Ons</a></li>
+    <li><a href="#portfolio">Realisaties</a></li>
+    <li><a href="#contact" class="btn-nav">Contact</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobiel-menu" id="mobielmenu">
+  <button class="mobiel-sluit" onclick="toggleMenu()">&#10005;</button>
+  <a href="#over"      onclick="toggleMenu()">Over Ons</a>
+  <a href="#portfolio" onclick="toggleMenu()">Realisaties</a>
+  <a href="#contact"   onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section id="home">
+  <div class="hero-foto">
+    <!--
+      HERO ACHTERGROND FOTO:
+      Verwijder de gradient in de CSS en voeg hier een foto toe:
+      <img src="fotos/hero.jpg" style="width:100%;height:100%;object-fit:cover;">
+    -->
+  </div>
+  <div class="hero-inhoud">
+    <div class="hero-label">Reclame &amp; Grafisch Ontwerp &#8212; Ruiselede</div>
+    <h1>Van <em>Idee</em><br>tot Realisatie</h1>
+    <p>Meer dan 25 jaar ervaring in de reclamesector. Spandoeken, belettering, signalisatie, zeefdruk en meer.</p>
+    <div class="hero-knoppen">
+      <a href="#portfolio" class="knop-goud">Bekijk onze realisaties</a>
+      <a href="#contact"   class="knop-leeg">Neem contact op</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     DIENSTEN BALK
+═══════════════════════════════════════════════ -->
+<div class="diensten-balk">
+  <div class="dienst">
+    <div class="dienst-icoon">&#128424;</div>
+    <h3>Spandoeken &amp; Drukwerk</h3>
+    <p>Op maat voor elk evenement of bedrijf.</p>
+  </div>
+  <div class="dienst">
+    <div class="dienst-icoon">&#128663;</div>
+    <h3>Voertuig- &amp; Raambelettering</h3>
+    <p>Professioneel voor elk type voertuig.</p>
+  </div>
+  <div class="dienst">
+    <div class="dienst-icoon">&#127959;</div>
+    <h3>Signalisatie &amp; Gevelreclame</h3>
+    <p>Borden, naamborden en gevelreclame.</p>
+  </div>
+  <div class="dienst">
+    <div class="dienst-icoon">&#128083;</div>
+    <h3>Zeefdruk &amp; Vlaggen</h3>
+    <p>Textiel, bouwborden, vlaggen en roll-ups.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PORTFOLIO / REALISATIES
+═══════════════════════════════════════════════ -->
+<section id="portfolio">
+  <div class="onzichtbaar">
+    <div class="sectie-label">Ons Werk</div>
+    <h2 class="sectie-titel">Realisaties</h2>
+    <p class="sectie-intro">Kies een categorie om onze werken te bekijken. Klik op een foto voor een grotere weergave.</p>
+  </div>
+
+  <div class="onzichtbaar">
+    <div class="categorie-tabs" id="catTabs">
+      <button class="cat-knop actief" data-cat="spandoeken">Spandoeken</button>
+      <button class="cat-knop" data-cat="voertuig">Voertuigbelettering</button>
+      <button class="cat-knop" data-cat="raam">Raambelettering</button>
+      <button class="cat-knop" data-cat="reclameborden">Reclameborden</button>
+      <button class="cat-knop" data-cat="magneet">Magneetborden</button>
+      <button class="cat-knop" data-cat="naam">Naamborden</button>
+      <button class="cat-knop" data-cat="zandstraal">Zandstraalfolies</button>
+      <button class="cat-knop" data-cat="signalisatie">Signalisatie</button>
+      <button class="cat-knop" data-cat="zeefdruk-textiel">Zeefdruk Textiel</button>
+      <button class="cat-knop" data-cat="zeefdruk-werf">Zeefdruk Werf &amp; Immo</button>
+      <button class="cat-knop" data-cat="vlaggen">Vlaggen &amp; Roll-ups</button>
+      <button class="cat-knop" data-cat="gevel">Gevelreclame</button>
+      <button class="cat-knop" data-cat="tinting">Window Tinting</button>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+       SPANDOEKEN
+       Voeg foto's toe door in elk .foto-item een
+       <img src="fotos/spandoek1.jpg" alt="..."> te plaatsen
+  ───────────────────────────────────────────── -->
+  <div class="cat-paneel actief" id="cat-spandoeken">
+    <h3>Spandoeken</h3>
+    <p class="cat-omschrijving">Professionele spandoeken op maat voor evenementen, bedrijven en promoties.</p>
+    <div class="foto-raster">
+      <div class="foto-item">
+        <!-- <img src="fotos/spandoek1.jpg" alt="Spandoek"> -->
+        <div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div>
+        <div class="foto-overlay"><span>&#8853;</span></div>
+      </div>
+      <div class="foto-item">
+        <!-- <img src="fotos/spandoek2.jpg" alt="Spandoek"> -->
+        <div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div>
+        <div class="foto-overlay"><span>&#8853;</span></div>
+      </div>
+      <div class="foto-item">
+        <!-- <img src="fotos/spandoek3.jpg" alt="Spandoek"> -->
+        <div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div>
+        <div class="foto-overlay"><span>&#8853;</span></div>
+      </div>
+      <div class="foto-item">
+        <!-- <img src="fotos/spandoek4.jpg" alt="Spandoek"> -->
+        <div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div>
+        <div class="foto-overlay"><span>&#8853;</span></div>
+      </div>
+      <div class="foto-item">
+        <!-- <img src="fotos/spandoek5.jpg" alt="Spandoek"> -->
+        <div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 5</div></div>
+        <div class="foto-overlay"><span>&#8853;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VOERTUIGBELETTERING -->
+  <div class="cat-paneel" id="cat-voertuig">
+    <h3>Voertuigbelettering</h3>
+    <p class="cat-omschrijving">Opvallende belettering voor bestelwagens, auto's en vrachtwagens.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/voertuig1.jpg" alt="Voertuigbelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/voertuig2.jpg" alt="Voertuigbelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/voertuig3.jpg" alt="Voertuigbelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/voertuig4.jpg" alt="Voertuigbelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/voertuig5.jpg" alt="Voertuigbelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 5</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/voertuig6.jpg" alt="Voertuigbelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 6</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- RAAMBELETTERING -->
+  <div class="cat-paneel" id="cat-raam">
+    <h3>Raambelettering</h3>
+    <p class="cat-omschrijving">Decoratieve en informatieve belettering voor etalages en kantoren.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/raam1.jpg" alt="Raambelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/raam2.jpg" alt="Raambelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/raam3.jpg" alt="Raambelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/raam4.jpg" alt="Raambelettering"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- RECLAMEBORDEN -->
+  <div class="cat-paneel" id="cat-reclameborden">
+    <h3>Reclameborden</h3>
+    <p class="cat-omschrijving">Duurzame reclameborden voor buiten en binnen, in elk formaat.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/reclamebord1.jpg" alt="Reclamebord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/reclamebord2.jpg" alt="Reclamebord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/reclamebord3.jpg" alt="Reclamebord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/reclamebord4.jpg" alt="Reclamebord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- MAGNEETBORDEN -->
+  <div class="cat-paneel" id="cat-magneet">
+    <h3>Magneetborden</h3>
+    <p class="cat-omschrijving">Flexibele magneetborden die makkelijk verwisseld kunnen worden.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/magneet1.jpg" alt="Magneetbord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/magneet2.jpg" alt="Magneetbord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/magneet3.jpg" alt="Magneetbord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- NAAMBORDEN -->
+  <div class="cat-paneel" id="cat-naam">
+    <h3>Naamborden</h3>
+    <p class="cat-omschrijving">Stijlvolle naamborden voor bedrijven, kantoren en woningen.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/naambord1.jpg" alt="Naambord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/naambord2.jpg" alt="Naambord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/naambord3.jpg" alt="Naambord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/naambord4.jpg" alt="Naambord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- ZANDSTRAALFOLIES -->
+  <div class="cat-paneel" id="cat-zandstraal">
+    <h3>Zandstraalfolies</h3>
+    <p class="cat-omschrijving">Decoratieve folies met zandstraaleffect voor glas en ramen.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/zandstraal1.jpg" alt="Zandstraalfolie"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/zandstraal2.jpg" alt="Zandstraalfolie"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/zandstraal3.jpg" alt="Zandstraalfolie"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- SIGNALISATIE -->
+  <div class="cat-paneel" id="cat-signalisatie">
+    <h3>Signalisatie</h3>
+    <p class="cat-omschrijving">Duidelijke signalisatie voor bedrijven, evenementen en publieke ruimtes.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/signalisatie1.jpg" alt="Signalisatie"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/signalisatie2.jpg" alt="Signalisatie"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/signalisatie3.jpg" alt="Signalisatie"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/signalisatie4.jpg" alt="Signalisatie"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- ZEEFDRUK TEXTIEL -->
+  <div class="cat-paneel" id="cat-zeefdruk-textiel">
+    <h3>Zeefdruk Textiel</h3>
+    <p class="cat-omschrijving">Hoogwaardige zeefdruk op T-shirts, polo's, hoodies en andere kledij.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/zeefdruk1.jpg" alt="Zeefdruk"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/zeefdruk2.jpg" alt="Zeefdruk"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/zeefdruk3.jpg" alt="Zeefdruk"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/zeefdruk4.jpg" alt="Zeefdruk"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- ZEEFDRUK WERF & IMMO -->
+  <div class="cat-paneel" id="cat-zeefdruk-werf">
+    <h3>Zeefdruk Werf &amp; Immo</h3>
+    <p class="cat-omschrijving">Bouwborden en immoborden voor aannemers en vastgoedkantoren.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/werf1.jpg" alt="Werf bord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/werf2.jpg" alt="Werf bord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/werf3.jpg" alt="Werf bord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/werf4.jpg" alt="Werf bord"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- VLAGGEN & ROLL-UPS -->
+  <div class="cat-paneel" id="cat-vlaggen">
+    <h3>Vlaggen &amp; Roll-ups</h3>
+    <p class="cat-omschrijving">Beachvlaggen, bedrijfsvlaggen en roll-up displays voor binnen en buiten.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/vlag1.jpg" alt="Vlag"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/vlag2.jpg" alt="Vlag"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/vlag3.jpg" alt="Vlag"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- GEVELRECLAME -->
+  <div class="cat-paneel" id="cat-gevel">
+    <h3>Gevelreclame</h3>
+    <p class="cat-omschrijving">Opvallende gevelreclame die uw zaak dag en nacht zichtbaar maakt.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/gevel1.jpg" alt="Gevelreclame"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/gevel2.jpg" alt="Gevelreclame"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/gevel3.jpg" alt="Gevelreclame"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/gevel4.jpg" alt="Gevelreclame"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 4</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+
+  <!-- WINDOW TINTING -->
+  <div class="cat-paneel" id="cat-tinting">
+    <h3>Window Tinting</h3>
+    <p class="cat-omschrijving">Professioneel getint glas voor privacy, zonwering en esthetiek.</p>
+    <div class="foto-raster">
+      <div class="foto-item"><!-- <img src="fotos/tinting1.jpg" alt="Window tinting"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 1</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/tinting2.jpg" alt="Window tinting"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 2</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+      <div class="foto-item"><!-- <img src="fotos/tinting3.jpg" alt="Window tinting"> --><div class="placeholder"><div class="placeholder-icoon">&#128444;</div><div class="placeholder-tekst">Foto 3</div></div><div class="foto-overlay"><span>&#8853;</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="sluitLightbox()">
+  <div class="lb-binnen" onclick="event.stopPropagation()">
+    <button class="lb-sluit" onclick="sluitLightbox()">&#10005;</button>
+    <div class="lb-leeg">
+      <div style="font-size:48px;opacity:.15">&#128444;</div>
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;">Foto verschijnt hier</p>
+    </div>
+    <div class="lb-onderschrift" id="lb-onderschrift"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     OVER ONS
+═══════════════════════════════════════════════ -->
+<section id="over">
+  <div class="over-raster">
+    <div class="over-foto-kader onzichtbaar">
+      <div class="over-foto">
+        <!--
+          PORTRETFOTO:
+          Vervang de placeholder door:
+          <img src="fotos/portret.jpg" alt="DIM Creations">
+        -->
+        <div class="placeholder">
+          <div class="placeholder-icoon">&#128100;</div>
+          <div class="placeholder-tekst">Foto toevoegen</div>
+        </div>
+      </div>
+    </div>
+    <div class="over-tekst onzichtbaar">
+      <div class="sectie-label">Wie zijn wij?</div>
+      <h2 class="sectie-titel">Over Ons</h2>
+      <blockquote>&#8220;Kwaliteit, service en snelheid &#8212; van A tot Z.&#8221;</blockquote>
+      <p>Na het volgen van een grafische opleiding in reclame en decoratie aan <strong>Sint-Lucas Gent</strong> hebben we ons meteen op onze passie gestort: de reclamesector.</p>
+      <p>Intussen zijn we al <strong>meer dan 25 jaar actief</strong> en blijven we inspelen op de nieuwste technologie&#235;n. Op die manier kunnen we aan al uw wensen beantwoorden.</p>
+      <p>DIM Creations staat voor <strong>kwaliteit, service en snelheid</strong> &#8212; en dit van A tot Z. Onze specialiteit is de begeleiding van het hele proces: van idee tot realisatie.</p>
+      <div class="stats">
+        <div class="stat"><strong>25+</strong><span>jaar ervaring</span></div>
+        <div class="stat"><strong>13</strong><span>diensten</span></div>
+        <div class="stat"><strong>100%</strong><span>op maat</span></div>
+      </div>
+      <div class="labels">
+        <span class="label-tag">Spandoeken</span>
+        <span class="label-tag">Belettering</span>
+        <span class="label-tag">Signalisatie</span>
+        <span class="label-tag">Zeefdruk</span>
+        <span class="label-tag">Gevelreclame</span>
+        <span class="label-tag">Window Tinting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-raster">
+    <div class="onzichtbaar">
+      <div class="sectie-label">Samenwerken?</div>
+      <h2 class="sectie-titel">Contact</h2>
+      <p>Heeft u een project in gedachten of wenst u meer informatie? Neem gerust contact op &#8212; we beantwoorden uw vraag zo snel mogelijk.</p>
+      <ul class="contact-lijst">
+        <li>
+          <span class="icoon">&#128205;</span>
+          <div>Zandvleugestraat 1<br>8755 Ruiselede</div>
+        </li>
+        <li>
+          <span class="icoon">&#128222;</span>
+          <div>
+            <a href="tel:051686750">051 68 67 50</a><br>
+            <a href="tel:0477686750">0477/68 67 50</a>
+          </div>
+        </li>
+        <li>
+          <span class="icoon">&#9993;</span>
+          <a href="mailto:info@dimcreations.be">info@dimcreations.be</a>
+        </li>
+      </ul>
+      <div class="sociaal-rij">
+        <!-- Vervang # door de echte Facebook/Instagram link -->
+        <a href="#" class="sociaal-knop">&#128248; Facebook</a>
+        <a href="#" class="sociaal-knop">&#128247; Instagram</a>
+      </div>
+    </div>
+    <div class="onzichtbaar">
+      <form class="formulier" onsubmit="verstuurFormulier(event)">
+        <div class="veld-rij">
+          <div class="veld">
+            <label>Voornaam</label>
+            <input type="text" placeholder="Jan">
+          </div>
+          <div class="veld">
+            <label>Naam</label>
+            <input type="text" placeholder="Janssen">
+          </div>
+        </div>
+        <div class="veld">
+          <label>E-mail</label>
+          <input type="email" placeholder="jan@voorbeeld.be">
+        </div>
+        <div class="veld">
+          <label>Telefoon</label>
+          <input type="tel" placeholder="+32 ...">
+        </div>
+        <div class="veld">
+          <label>Dienst</label>
+          <select>
+            <option value="">Kies een dienst...</option>
+            <option>Spandoeken</option>
+            <option>Voertuigbelettering</option>
+            <option>Raambelettering</option>
+            <option>Reclameborden</option>
+            <option>Magneetborden</option>
+            <option>Naamborden</option>
+            <option>Zandstraalfolies</option>
+            <option>Signalisatie</option>
+            <option>Zeefdruk Textiel</option>
+            <option>Zeefdruk Werf &amp; Immo</option>
+            <option>Vlaggen &amp; Roll-ups</option>
+            <option>Gevelreclame</option>
+            <option>Window Tinting</option>
+            <option>Andere</option>
+          </select>
+        </div>
+        <div class="veld">
+          <label>Bericht</label>
+          <textarea placeholder="Vertel ons meer over uw project..."></textarea>
+        </div>
+        <button type="submit" class="verstuur-knop">Verstuur bericht &#8594;</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-boven">
+    <div class="footer-merk">
+      <a href="#home" class="footer-logo-tekst">DIM <span>Creations</span></a>
+      <p>Van Idee tot Realisatie &#8212; meer dan 25 jaar reclame en grafisch ontwerp vanuit Ruiselede.</p>
+    </div>
+    <div class="footer-kolom">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#over">Over Ons</a></li>
+        <li><a href="#portfolio">Realisaties</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-kolom">
+      <h4>Diensten</h4>
+      <ul>
+        <li><a href="#portfolio">Spandoeken</a></li>
+        <li><a href="#portfolio">Voertuigbelettering</a></li>
+        <li><a href="#portfolio">Raambelettering</a></li>
+        <li><a href="#portfolio">Signalisatie</a></li>
+        <li><a href="#portfolio">Zeefdruk</a></li>
+        <li><a href="#portfolio">Gevelreclame</a></li>
+      </ul>
+    </div>
+    <div class="footer-kolom">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></li>
+        <li><a href="tel:051686750">051 68 67 50</a></li>
+        <li><a href="tel:0477686750">0477/68 67 50</a></li>
+        <li><a>Zandvleugestraat 1, 8755 Ruiselede</a></li>
+      </ul>
+    </div>
+    <div class="footer-sociaal">
+      <h4>Volg ons</h4>
+      <!-- Vervang # door echte links -->
+      <div class="sociaal-icoontjes">
+        <a href="#" title="Facebook">&#128248;</a>
+        <a href="#" title="Instagram">&#128247;</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-onder">
+    <p>&#169; 2026 DIM Creations &#8212; Alle rechten voorbehouden</p>
+    <p><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+// Navigatie scroll
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Mobiel menu
+function toggleMenu() {
+  document.getElementById('mobielmenu').classList.toggle('open');
+}
+
+// Categorie tabs
+document.getElementById('catTabs').addEventListener('click', function(e) {
+  var knop = e.target.closest('.cat-knop');
+  if (!knop) return;
+  document.querySelectorAll('.cat-knop').forEach(function(k) { k.classList.remove('actief'); });
+  document.querySelectorAll('.cat-paneel').forEach(function(p) { p.classList.remove('actief'); });
+  knop.classList.add('actief');
+  var paneel = document.getElementById('cat-' + knop.dataset.cat);
+  if (paneel) paneel.classList.add('actief');
+});
+
+// Foto's klikbaar maken voor lightbox
+document.querySelectorAll('.foto-item').forEach(function(item) {
+  item.addEventListener('click', function() {
+    var img = item.querySelector('img');
+    var lb = document.getElementById('lightbox');
+    var binnen = lb.querySelector('.lb-binnen');
+
+    // Verwijder vorige foto indien aanwezig
+    var oudeFoto = binnen.querySelector('#lb-foto');
+    if (oudeFoto) oudeFoto.remove();
+
+    if (img) {
+      // Echte foto tonen
+      lb.querySelector('.lb-leeg').style.display = 'none';
+      var nieuweFoto = document.createElement('img');
+      nieuweFoto.id = 'lb-foto';
+      nieuweFoto.src = img.src;
+      nieuweFoto.alt = img.alt || '';
+      binnen.insertBefore(nieuweFoto, lb.querySelector('.lb-onderschrift'));
+      document.getElementById('lb-onderschrift').textContent = img.alt || '';
+    } else {
+      // Placeholder tonen
+      lb.querySelector('.lb-leeg').style.display = 'flex';
+      document.getElementById('lb-onderschrift').textContent = '';
+    }
+
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function sluitLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') sluitLightbox();
+});
+
+// Scroll reveal
+var waarnemer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add('zichtbaar');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.onzichtbaar').forEach(function(el) {
+  waarnemer.observe(el);
+});
+
+// Contactformulier
+function verstuurFormulier(e) {
+  e.preventDefault();
+  var knop = e.target.querySelector('.verstuur-knop');
+  knop.textContent = '\u2713 Verstuurd!';
+  knop.style.background = '#2d6a4f';
+  setTimeout(function() {
+    knop.textContent = 'Verstuur bericht \u2192';
+    knop.style.background = '';
+  }, 3000);
+}
+</script>
+</body>
+</html>
