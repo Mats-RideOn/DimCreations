@@ -99,7 +99,8 @@ nav {
   display: flex; 
   flex-direction: column;
   justify-content: center;
-  padding: 0;  /* ← voeg toe */
+  padding: 0 !important;  
+  margin: 0 !important;  
 }
 .hero-foto {
   position: absolute; inset: 0;
@@ -126,7 +127,7 @@ nav {
 
 .hero-inhoud {
   position: absolute;
-  bottom: -200px;
+  bottom: -180px;
   left: 0;
   right: 0;
   z-index: 2;
@@ -153,14 +154,7 @@ nav {
   overflow: visible;
 }
 .hero-inhoud h1 em { font-style: italic; color: var(--rood); }
-.hero-inhoud {
-  position: relative; z-index: 2;
-  padding: 0 5vw;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  animation: opKomen .9s ease both;
-}
+
 .hero-knoppen { 
   display: flex; 
   gap: 12px; 
