@@ -556,6 +556,7 @@ footer {
     <img src="https://raw.githubusercontent.com/Mats-RideOn/DIMCreations/main/fotos/logodim.png" alt="DIM Creations" style="height:46px;width:auto;">
   </a>
   <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
     <li><a href="#over">Over Ons</a></li>
     <li><a href="#werk">Werk</a></li>
     <li><a href="#contact" class="btn-nav">Contact</a></li>
@@ -567,6 +568,7 @@ footer {
 
 <div class="mobiel-menu" id="mobielmenu">
   <button class="mobiel-sluit" onclick="toggleMenu()">&#10005;</button>
+  <a href="#home"    onclick="toggleMenu()">Home</a>
   <a href="#over"    onclick="toggleMenu()">Over Ons</a>
   <a href="#werk"    onclick="toggleMenu()">Werk</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
@@ -904,6 +906,7 @@ footer {
       <ul>
         <li>
       <div><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></div>
+      <div><a href="tel:+32 477 686 750">+32 477 686 750</a></div>
       </li>
       </ul>
     </div>
@@ -932,14 +935,10 @@ function toggleMenu() {
 // Diensten kaarten — touch interactie voor mobiel
 document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
   kaart.addEventListener('click', function() {
-    var wasActief = kaart.classList.contains('touch-actief');
-    document.querySelectorAll('.dienst-kaart').forEach(function(k) {
-      k.classList.remove('touch-actief');
-    });
-    if (!wasActief) kaart.classList.add('touch-actief');
+    kaart.classList.toggle('touch-actief');
   });
 });
-
+  
 // Scroll reveal
 var waarnemer = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
