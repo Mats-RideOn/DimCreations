@@ -123,9 +123,13 @@ nav {
 }
 
 .hero-inhoud {
-  position: relative; z-index: 2;
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+  z-index: 2;
   padding: 0 5vw;
-  max-width: 700px;
+  max-width: 100%;
   margin: 0 auto;
   text-align: center;
   animation: opKomen .9s ease both;
@@ -138,8 +142,9 @@ nav {
 }
 .hero-inhoud h1 {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(42px, 7vw, 86px); font-weight: 300;
-  color: var(--wit); line-height: 1.0; margin-bottom: 20px;
+  font-size: clamp(32px, 5vw, 60px); font-weight: 300;
+  color: var(--wit); line-height: 1.2; margin-bottom: 30px;
+  white-space: nowrap;
 }
 .hero-inhoud h1 em { font-style: italic; color: var(--rood); }
 .hero-inhoud {
