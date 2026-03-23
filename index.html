@@ -168,8 +168,8 @@ nav {
   overflow: hidden;
   border-top: 1px solid rgba(255,255,255,.08);
   border-bottom: 1px solid rgba(255,255,255,.08);
-  background: rgba(0,0,0,.3);
-  backdrop-filter: blur(4px);
+  background: transparent;  /* was: rgba(0,0,0,.3) */
+  backdrop-filter: none;  /* was: blur(4px) */
   padding: 16px 0;
   white-space: nowrap;
 }
@@ -194,14 +194,14 @@ nav {
   font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   font-weight: 400;
-  letter-spacing: 3px;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
   color: var(--rood);
   border: 1px solid rgba(206,17,38,.4);
-  padding: 8px 20px;
-  border-radius: 25px;
+  padding: 5px 14px;
+  border-radius: 20px;
   margin: 0 12px;
-  background: rgba(206,17,38,.05);
+  background: transparent;
 }
 @keyframes scrollTekst {
   0%   { transform: translateX(0); }
