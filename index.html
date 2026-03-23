@@ -126,8 +126,8 @@ nav {
   position: relative; z-index: 2;
   padding: 0 5vw;
   max-width: 700px;
-  margin-top: 100px;
-  margin-left: -5vw;
+  margin: 0 auto;
+  text-align: center;
   animation: opKomen .9s ease both;
 }
 .hero-label {
@@ -142,11 +142,20 @@ nav {
   color: var(--wit); line-height: 1.0; margin-bottom: 20px;
 }
 .hero-inhoud h1 em { font-style: italic; color: var(--rood); }
-.hero-inhoud p {
-  font-size: 15px; color: rgba(255,255,255,.5);
-  max-width: 420px; line-height: 1.85; margin-bottom: 36px;
+.hero-inhoud {
+  position: relative; z-index: 2;
+  padding: 0 5vw;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  animation: opKomen .9s ease both;
 }
-.hero-knoppen { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-knoppen { 
+  display: flex; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+  justify-content: center;
+}
 .knop-rood {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--rood); color: var(--wit);
@@ -586,14 +595,8 @@ footer {
   </div>
 
   <div class="hero-inhoud">
-    <div class="hero-label">Reclame &amp; Grafisch Ontwerp</div>
-    <h1>Van <em>Idee</em><br>tot Realisatie</h1>
-    <p>Meer dan 30 jaar ervaring in de reclamesector. Spandoeken, belettering, signalisatie, zeefdruk en meer.</p>
-    <div class="hero-knoppen">
-      <a href="#werk"    class="knop-rood">Bekijk ons werk</a>
-      <a href="#contact" class="knop-leeg">Neem contact op</a>
-    </div>
-  </div>
+  <h1>Belettering op maat &#8212; <em>Zichtbaar vakwerk sinds 1995.</em></h1>
+  <div class="hero-knoppen">
 
   <!-- Scrollende tekst band -->
 <div class="tekst-band">
