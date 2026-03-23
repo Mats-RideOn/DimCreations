@@ -890,7 +890,7 @@ footer {
         </div>
         <div class="veld">
           <label>Telefoon</label>
-          <input type="tel" placeholder="+32 ..." pattern="[0-9+\s\-()]+" title="Gebruik alleen cijfers, +, spaties, - en ()" required>
+            <input type="tel" placeholder="+32 ..." required pattern="[\+]?[0-9\s\-\(\)]+" title="Gebruik alleen cijfers, +, spaties, - en ()" oninvalid="this.setCustomValidity('Voer een geldig telefoonnummer in (alleen cijfers, +, spaties, - en ())')" oninput="this.setCustomValidity('')">
         </div>
         <div class="veld">
           <label>Dienst</label>
