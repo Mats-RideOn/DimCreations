@@ -886,7 +886,7 @@ footer {
         </div>
         <div class="veld">
           <label>E-mail</label>
-          <input type="email" placeholder="jan@voorbeeld.be" required>
+          <input type="email" placeholder="jan@voorbeeld.be" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" title="Voer een geldig e-mailadres in (bijvoorbeeld: naam@voorbeeld.be)" oninvalid="this.setCustomValidity('Voer een geldig e-mailadres in (bijvoorbeeld: naam@voorbeeld.be)')" oninput="this.setCustomValidity('')">
         </div>
         <div class="veld">
           <label>Telefoon</label>
