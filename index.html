@@ -456,13 +456,7 @@ h2.sectie-titel {
   font-family: inherit; font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
   cursor: pointer; transition: background .2s, transform .15s; align-self: flex-start;
 }
-  .veld input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  accent-color: var(--rood);
-  margin-top: 2px;
-}
+  
 .verstuur-knop:hover { background: var(--rood2); transform: translateY(-1px); }
 
 /* ── FOOTER ──────────────────────────────────────────────── */
@@ -919,14 +913,12 @@ footer {
           <label>Bericht</label>
           <textarea placeholder="Vertel ons meer over uw project..." required></textarea>
         </div>
-        <div class="veld">
-          <div style="display: flex; gap: 10px; align-items: flex-start;">
-          <input type="checkbox" id="privacy-check" name="privacy" required>
-           <label for="privacy-check" style="font-size: 13px; text-transform: none; letter-spacing: 0; cursor: pointer; line-height: 1.5;">
-            Ik ga akkoord dat mijn gegevens gebruikt worden zoals beschreven in de <a href="#privacy" style="color: var(--rood); text-decoration: underline;">privacy policy</a>.
-          </label>
+         <div class="veld" style="margin-top: 10px;">
+            <label for="privacy-check" style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; text-transform: none; letter-spacing: 0; font-weight: normal;">
+            <input type="checkbox" id="privacy-check" name="privacy" required style="margin: 0 !important; cursor: pointer !important; width: 18px !important; height: 18px !important; min-width: 18px !important; flex-shrink: 0; accent-color: #CE1126 !important; position: relative; z-index: 999; pointer-events: auto !important; appearance: auto !important; border: 1px solid #999 !important; border-radius: 3px !important; background: white !important; padding: 0 !important;">
+            <span style="line-height: 1.5;">Ik ga akkoord dat mijn gegevens gebruikt worden zoals beschreven in de <a href="#privacy" style="color: var(--rood); text-decoration: underline;">privacy policy</a>.</span>
+            </label>
         </div>
-      </div>
         <button type="submit" class="verstuur-knop">Verstuur bericht &#8594;</button>
       </form>
     </div>
