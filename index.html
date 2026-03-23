@@ -189,6 +189,20 @@ nav {
   color: var(--rood);
   font-weight: 400;
 }
+.dienst-badge {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rood);
+  border: 1px solid rgba(206,17,38,.4);
+  padding: 8px 20px;
+  border-radius: 25px;
+  margin: 0 12px;
+  background: rgba(206,17,38,.05);
+}
 @keyframes scrollTekst {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -580,16 +594,31 @@ footer {
   </div>
 
   <!-- Scrollende tekst band -->
-  <div class="tekst-band">
-    <div class="tekst-band-inner">
-      <span>Belettering op maat &nbsp;&#8212;&nbsp; <em>Zichtbaar vakwerk sinds 1995</em></span>
-      <span>Belettering op maat &nbsp;&#8212;&nbsp; <em>Zichtbaar vakwerk sinds 1995</em></span>
-      <span>Belettering op maat &nbsp;&#8212;&nbsp; <em>Zichtbaar vakwerk sinds 1995</em></span>
-      <span>Belettering op maat &nbsp;&#8212;&nbsp; <em>Zichtbaar vakwerk sinds 1995</em></span>
-      <span>Belettering op maat &nbsp;&#8212;&nbsp; <em>Zichtbaar vakwerk sinds 1995</em></span>
-      <span>Belettering op maat &nbsp;&#8212;&nbsp; <em>Zichtbaar vakwerk sinds 1995</em></span>
-    </div>
+<div class="tekst-band">
+  <div class="tekst-band-inner">
+    <span class="dienst-badge">Voertuigbelettering</span>
+    <span class="dienst-badge">Carwrapping</span>
+    <span class="dienst-badge">Digitaal Printen</span>
+    <span class="dienst-badge">Reclameborden</span>
+    <span class="dienst-badge">Raamfolies</span>
+    <span class="dienst-badge">Spandoeken</span>
+    <span class="dienst-badge">Gevelreclame</span>
+    <span class="dienst-badge">Signalisatie</span>
+    <span class="dienst-badge">Zeefdruk</span>
+    <span class="dienst-badge">Vlaggen &amp; Banners</span>
+    <!-- Duplicaat voor naadloze scroll -->
+    <span class="dienst-badge">Voertuigbelettering</span>
+    <span class="dienst-badge">Carwrapping</span>
+    <span class="dienst-badge">Digitaal Printen</span>
+    <span class="dienst-badge">Reclameborden</span>
+    <span class="dienst-badge">Raamfolies</span>
+    <span class="dienst-badge">Spandoeken</span>
+    <span class="dienst-badge">Gevelreclame</span>
+    <span class="dienst-badge">Signalisatie</span>
+    <span class="dienst-badge">Zeefdruk</span>
+    <span class="dienst-badge">Vlaggen &amp; Banners</span>
   </div>
+</div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
@@ -843,7 +872,7 @@ footer {
           <div><a href="tel:+32 477 686 750">+32 477 686 750</a></div>
         </li>
        <li>
-      <span class="icoon">&#128232;</span>
+      <span class="icoon">&#128231;</span>
       <div><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></div>
       </li>
       </ul>
@@ -888,6 +917,12 @@ footer {
         <div class="veld">
           <label>Bericht</label>
           <textarea placeholder="Vertel ons meer over uw project..."></textarea>
+        </div>
+        <div class="veld">
+          <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; text-transform: none; letter-spacing: 0;">
+          <input type="checkbox" id="privacy" required style="margin-top: 3px; cursor: pointer; width: 16px; height: 16px;">
+          <span>Ik ga akkoord dat mijn gegevens gebruikt worden zoals beschreven in de <a href="#privacy" style="color: var(--rood); text-decoration: underline;">privacy policy</a>.</span>
+          </label>
         </div>
         <button type="submit" class="verstuur-knop">Verstuur bericht &#8594;</button>
       </form>
