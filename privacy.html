@@ -3,11 +3,539 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacyverklaring — DIM Creations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
 
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-<a href="/">← Terug naar website</a>
+:root {
+  --zwart:   #181816;
+  --wit:     #ffffff;
+  --papier:  #f5f2ed;
+  --warm:    #eae5dc;
+  --rood:    #CE1126;
+  --rood2:   #a50d1e;
+  --grijs:   #888278;
+  --rand:    #dbd6cc;
+}
 
+html { scroll-behavior: smooth; }
 
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--papier);
+  color: var(--zwart);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
 
+/* ── NAVIGATIE ───────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(24,24,22,.97);
+  backdrop-filter: blur(10px);
+  height: 64px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 5vw;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 46px; width: auto; }
+
+.nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s;
+}
+.nav-links a:hover { color: var(--wit); }
+.nav-links .btn-nav {
+  background: var(--rood); color: var(--wit) !important;
+  padding: 8px 18px; border-radius: 3px; transition: background .2s !important;
+}
+.nav-links .btn-nav:hover { background: var(--rood2) !important; }
+
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--wit); border-radius: 2px; }
+
+.mobiel-menu {
+  display: none; position: fixed; inset: 0; z-index: 99;
+  background: var(--zwart);
+  flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+}
+.mobiel-menu.open { display: flex; }
+.mobiel-menu a {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 32px; font-weight: 300;
+  color: var(--wit); text-decoration: none; transition: color .2s;
+}
+.mobiel-menu a:hover { color: var(--rood); }
+.mobiel-sluit {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none; color: var(--wit); font-size: 26px; cursor: pointer;
+}
+
+/* ── HERO BANNER ─────────────────────────────────────────── */
+.privacy-hero {
+  background: var(--zwart);
+  padding: 120px 5vw 72px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.privacy-hero .sectie-label {
+  font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(206,17,38,.8); margin-bottom: 10px;
+}
+.privacy-hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(32px, 5vw, 60px); font-weight: 300;
+  color: var(--wit); line-height: 1.15; margin-bottom: 16px;
+}
+.privacy-hero .intro-tekst {
+  font-size: 15px; color: rgba(255,255,255,.35); max-width: 560px; line-height: 1.85;
+  margin-bottom: 32px;
+}
+
+/* ── TERUG KNOP ──────────────────────────────────────────── */
+.terug-knop {
+  display: inline-flex; align-items: center; gap: 9px;
+  border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.6);
+  padding: 11px 22px; border-radius: 3px;
+  font-size: 10.5px; letter-spacing: 2.5px; text-transform: uppercase;
+  text-decoration: none; cursor: pointer; background: none;
+  font-family: inherit;
+  transition: border-color .2s, color .2s, transform .15s;
+}
+.terug-knop:hover { border-color: var(--rood); color: var(--wit); transform: translateY(-1px); }
+.terug-knop svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* ── PRIVACY INHOUD ──────────────────────────────────────── */
+.privacy-inhoud {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 72px 5vw 100px;
+}
+
+/* Sectieblokken */
+.privacy-blok {
+  margin-bottom: 52px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--rand);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.privacy-blok.zichtbaar { opacity: 1; transform: none; }
+.privacy-blok:last-child { border-bottom: none; }
+
+.privacy-blok h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(22px, 3vw, 30px); font-weight: 400;
+  color: var(--zwart); line-height: 1.2;
+  margin-bottom: 18px;
+  padding-left: 16px;
+  border-left: 2px solid var(--rood);
+}
+
+.privacy-blok p {
+  font-size: 15px; color: var(--grijs);
+  line-height: 1.9; margin-bottom: 14px;
+}
+.privacy-blok p:last-child { margin-bottom: 0; }
+
+.privacy-blok strong { color: var(--zwart); font-weight: 500; }
+.privacy-blok u { text-decoration: underline; }
+.privacy-blok a { color: var(--rood); text-decoration: none; }
+.privacy-blok a:hover { text-decoration: underline; }
+
+/* Lijsten */
+.privacy-blok ul {
+  list-style: none;
+  margin: 14px 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.privacy-blok ul li {
+  font-size: 15px; color: var(--grijs); line-height: 1.85;
+  padding-left: 20px; position: relative;
+}
+.privacy-blok ul li::before {
+  content: '';
+  position: absolute; left: 0; top: 11px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--rood); opacity: .7;
+}
+
+/* Geneste lijsten */
+.privacy-blok ul ul {
+  margin: 8px 0 0 8px;
+}
+.privacy-blok ul ul li::before {
+  width: 4px; height: 4px; top: 12px;
+  background: var(--grijs); opacity: .5;
+}
+
+/* Categorie labels */
+.cat-label {
+  display: inline-block;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--rood); border: 1px solid rgba(206,17,38,.3);
+  padding: 3px 10px; border-radius: 20px;
+  margin-right: 8px; vertical-align: middle;
+}
+
+/* Bijgewerkt datum badge */
+.datum-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--grijs); border: 1px solid var(--rand);
+  padding: 7px 14px; border-radius: 3px;
+  margin-bottom: 52px;
+}
+.datum-badge span { color: var(--zwart); font-weight: 500; }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  background: var(--zwart);
+  padding: 56px 5vw 26px;
+}
+.footer-boven {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.07);
+  flex-wrap: wrap; gap: 36px;
+}
+.footer-logo-tekst {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 24px; font-weight: 400; color: var(--wit); text-decoration: none;
+}
+.footer-logo-tekst img { height: 100px; width: auto; display: block; margin-bottom: 15px; }
+.footer-merk p { font-size: 13px; color: rgba(255,255,255,.3); margin-top: 8px; max-width: 240px; line-height: 1.7; }
+
+.footer-kolom h4 { font-size: 9.5px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 13px; }
+.footer-kolom ul { list-style: none; }
+.footer-kolom ul li { margin-bottom: 8px; }
+.footer-kolom ul li a { font-size: 13px; color: rgba(255,255,255,.42); text-decoration: none; transition: color .2s; }
+.footer-kolom ul li a:hover { color: var(--rood); }
+
+.footer-onder {
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 8px;
+}
+.footer-onder p { font-size: 11px; color: rgba(255,255,255,.16); }
+.footer-onder a { color: rgba(206,17,38,.5); text-decoration: none; }
+.footer-onder a:hover { color: var(--rood); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .burger { display: flex; }
+}
+@media (max-width: 600px) {
+  .privacy-hero { padding: 100px 5vw 52px; }
+  .privacy-inhoud { padding: 52px 5vw 72px; }
+  .footer-boven { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVIGATIE
+═══════════════════════════════════════════════ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/Mats-RideOn/DIMCreations/main/fotos/logodim.png" alt="DIM Creations">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#werk">Werk</a></li>
+    <li><a href="index.html#over">Over Ons</a></li>
+    <li><a href="index.html#contact" class="btn-nav">Contact</a></li>
+  </ul>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobiel-menu" id="mobielmenu">
+  <button class="mobiel-sluit" onclick="toggleMenu()">&#10005;</button>
+  <a href="index.html"         onclick="toggleMenu()">Home</a>
+  <a href="index.html#over"    onclick="toggleMenu()">Over Ons</a>
+  <a href="index.html#werk"    onclick="toggleMenu()">Werk</a>
+  <a href="index.html#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<div class="privacy-hero">
+  <div class="sectie-label">Juridisch</div>
+  <h1>Privacyverklaring</h1>
+  <p class="intro-tekst">Gebruiksvoorwaarden en vertrouwelijke verwerking van persoonsgegevens van GCV Depoortere Dimitri.</p>
+  <button class="terug-knop" onclick="history.back()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Terug naar vorige pagina
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PRIVACY INHOUD
+═══════════════════════════════════════════════ -->
+<main class="privacy-inhoud">
+
+  <div class="datum-badge">Laatst bijgewerkt: <span>maart 2026</span></div>
+
+  <!-- INTRO -->
+  <div class="privacy-blok">
+    <h2>Privacyverklaring</h2>
+    <p>GCV Depoortere Dimitri (hierna "wij") met adres Zandvleugestraat 1, 8755 Wingene is eigenaar van de website <a href="https://www.dimcreations.be">https://www.dimcreations.be</a>. Dit is een publieke website waarop de promotionele gegevens van GCV Depoortere Dimitri gepubliceerd staan.</p>
+    <p>We dragen graag zorg voor onze gasten. Zorg dragen voor de persoonsgegevens die je met ons deelt, vormt hier een belangrijk onderdeel van. Deze privacyverklaring legt uit hoe we je gegevens gebruiken om je een betere en inspirerende gebruikerservaring te bieden.</p>
+  </div>
+
+  <!-- VERANTWOORDELIJKE VERWERKER -->
+  <div class="privacy-blok">
+    <h2>Bescherming van je privacy — verantwoordelijke verwerker</h2>
+    <p>GCV Depoortere Dimitri is de verantwoordelijke voor de verwerking van persoonsgegevens op de website <a href="https://www.dimcreations.be">https://www.dimcreations.be/</a> (hierna: "de Website") en verbindt er zich toe het vertrouwelijk karakter van jouw persoonsgegevens te respecteren en te beschermen.</p>
+    <p>De "vertrouwelijke" verwerking houdt in dat wij jouw persoonsgegevens "vertrouwelijk" verwerken conform de gangbare wettelijke nationale en internationale bepalingen, waaronder de Belgische wet van 8 december 1992 tot bescherming van de persoonlijke levenssfeer (B.S., 18 maart 1993), zoals gewijzigd door de wet van 11 december 1998 (B.S., 3 februari 1999) en de Algemene Verordening Gegevensbescherming vanaf haar inwerkingtreding op 25 mei 2018. Zo zullen er geen enkele persoonsgegevens zoals adres, e-mail, telefoon en faxnummer, demografische gegevens of identificatiegegevens verwerkt worden zonder dat je toestemming tot deze verwerking zou gegeven hebben en zonder dat je het doel van deze verwerking kent.</p>
+  </div>
+
+  <!-- REGISTRATIE -->
+  <div class="privacy-blok">
+    <h2>Registratie van persoonsgegevens</h2>
+    <p>Je kan de website <a href="https://www.dimcreations.be">https://www.dimcreations.be/</a> vrij bezoeken en daarbij alle beschikbare informatie raadplegen over GCV Depoortere Dimitri, de producten en hun prijzen zonder dat je om het even welke persoonsgegevens ter beschikking dient te stellen.</p>
+    <p>Telkens je persoonsgegevens verstrekt, zullen wij deze behandelen in overeenstemming met het hier beschreven beleid en de wettelijke verplichtingen inzake de verwerking van persoonsgegevens.</p>
+  </div>
+
+  <!-- VERTROUWELIJKE VERWERKING -->
+  <div class="privacy-blok">
+    <h2>Vertrouwelijke verwerking van de gegevens</h2>
+    <p>De persoonsgegevens die GCV Depoortere Dimitri verzamelt, worden opgeslagen in een beveiligde omgeving die niet toegankelijk is voor het publiek. Het bestand kan alleen maar geraadpleegd worden door een beperkt aantal personen in dienst van GCV Depoortere Dimitri. De informatie zal louter voor interne doeleinden verwerkt worden.</p>
+    <p>GCV Depoortere Dimitri geeft in de regel geen persoonsgegevens door aan derden, behalve om te voldoen aan wettelijke verplichtingen en in geval van uitdrukkelijk verzoek van de gerechtelijke autoriteiten of politiediensten.</p>
+    <p><strong>GCV Depoortere Dimitri verkoopt jouw gegevens NIET aan derden.</strong></p>
+  </div>
+
+  <!-- WELKE GEGEVENS -->
+  <div class="privacy-blok">
+    <h2>Welke persoonsgegevens worden verwerkt?</h2>
+    <ul>
+      <li>Je e-mailadres inclusief interesses bij registratie voor onze nieuwsbrief op de Website.</li>
+      <li>Je e-mailadres, reden, voornaam, familienaam, telefoonnummer, boodschap (eventueel ook gegevens uit categorie 2 als je kiest om een account te maken en categorie 3 als je kiest voor de nieuwsbriefinschrijving) bij een contactaanvraag op de Website.</li>
+      <li>
+        De gegevens die we hieronder bijhouden zijn <u>geen</u> persoonsgegevens. We houden bij:
+        <ul>
+          <li>Voor niet-ingelogde gebruikers wordt een sessiecookie ingesteld die bijhoudt of de bezoeker al dan niet ingelogd is. Deze sessiecookie houdt ook bij op welke zoekparameters de bezoeker gezocht heeft, maar dit enkel zodat hij via "Terug naar overzicht" kan teruggaan naar de vorige pagina. Favorieten voor een niet-ingelogde gebruiker worden hierin ook bewaard. Deze sessiecookie blijft enkel geldig gedurende de browsersessie van de bezoeker — totdat deze verloopt — en wordt nergens permanent opgeslagen.</li>
+          <li>Er wordt een cookie ingesteld om bij te houden of de gebruiker al dan niet de slide-out onderaan de pagina weg geklikt heeft. Dit om ervoor te zorgen dat deze niet tevoorschijn blijft komen na het wegklikken.</li>
+          <li>Er wordt een cookie ingesteld als de gebruiker niet ingelogd is vanwege technische redenen. Deze cookie bevat geen persoonsgegevens.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- DOEL VERWERKING -->
+  <div class="privacy-blok">
+    <h2>Doel van verwerking van persoonsgegevens</h2>
+    <ul>
+      <li><span class="cat-label">Categorie 1</span> Het beheer van je account op de Website met het oog op het gebruik van onze website, met als rechtsgrond de uitvoering van een overeenkomst die door jou werd gevraagd. En indien door jou aangegeven, eveneens het toezenden van direct marketing, met als rechtsgrond je expliciete, voorafgaande toestemming. Indien er door jou aangegeven gezondheid gerelateerde gegevens worden gebruikt voor direct marketing, dan deze uiteraard ook enkel met voorafgaande toestemming.</li>
+      <li><span class="cat-label">Categorie 2</span> Het je toezenden van direct marketing, nieuwsbrieven, acties en promoties, met als rechtsgrond je expliciete, voorafgaande toestemming. Indien er door jou aangegeven gezondheid gerelateerde gegevens worden gebruikt voor direct marketing, dan deze uiteraard ook enkel met voorafgaande toestemming.</li>
+      <li><span class="cat-label">Categorie 3 &amp; 4</span> De levering en facturatie van door jou bestelde producten, met als rechtsgrond de uitvoering van een overeenkomst die door jou werd gevraagd.</li>
+      <li><span class="cat-label">Categorie 9</span> Om veiligheid en beschikbaarheid te garanderen met als rechtsgrond het gerechtvaardigd belang van GCV Depoortere Dimitri om de Website en dienstverlening voortdurend te verbeteren.</li>
+      <li><span class="cat-label">Categorie 10</span> Ter controle van spam met als rechtsgrond het gerechtvaardigd belang van GCV Depoortere Dimitri om de Website en dienstverlening voortdurend te verbeteren.</li>
+      <li><span class="cat-label">Categorie 11</span> Om de veiligheid te garanderen met het oog op preventie, detectie en vervolging van strafbare feiten met als rechtsgrond het gerechtvaardigd belang van GCV Depoortere Dimitri.</li>
+      <li><span class="cat-label">Categorie 13</span> Het verzorgen en verbeteren van deze Website en het opnemen van gegevens in anonieme statistieken, waaruit de identiteit van specifieke personen of bedrijven niet kunnen achterhaald worden, met als rechtsgrond het gerechtvaardigd belang van GCV Depoortere Dimitri om de Website en dienstverlening voortdurend te verbeteren.</li>
+    </ul>
+  </div>
+
+  <!-- GOOGLE ANALYTICS -->
+  <div class="privacy-blok">
+    <h2>Google Analytics</h2>
+    <p>Via onze website wordt een cookie geplaatst van het Amerikaanse bedrijf Google, als deel van de "Analytics"-dienst. Wij gebruiken deze dienst om bij te houden en rapportages te krijgen over hoe bezoekers de Website gebruiken. Google kan deze informatie aan derden verschaffen indien Google hiertoe wettelijk wordt verplicht, of voor zover derden de informatie namens Google verwerken. Wij hebben hier geen invloed op. Wij hebben Google toegestaan de verkregen analytics informatie te gebruiken voor andere Google diensten.</p>
+    <p>De informatie die Google verzamelt wordt zo veel mogelijk geanonimiseerd. Je IP-adres wordt nadrukkelijk niet meegegeven. De informatie wordt overgebracht naar en door Google opgeslagen op servers in de Verenigde Staten. Google stelt zich te houden aan de Privacy Shield principles en is aangesloten bij het Privacy Shield-programma van het Amerikaanse Ministerie van Handel. Dit houdt in dat er sprake is van een passend beschermingsniveau voor de verwerking van eventuele persoonsgegevens.</p>
+  </div>
+
+  <!-- RETARGETING COOKIES -->
+  <div class="privacy-blok">
+    <h2>Retargeting cookies</h2>
+    <p>Door ons worden zogenoemde retargeting cookies gebruikt. Daardoor kunnen wij op basis van je eerdere bezoeken aan onze website advertenties tonen op websites van derden. Hiervoor gebruik wij Facebook Pixel.</p>
+    <p>De informatie die ze verzamelen wordt zo veel mogelijk geanonimiseerd. De informatie wordt overgebracht naar en door Facebook opgeslagen op servers in de Verenigde Staten. Facebook stelt zich te houden aan de Privacy Shield principes en zijn aangesloten bij het Privacy Shield-programma van het Amerikaanse Ministerie van Handel. Dit houdt in dat er sprake is van een passend beschermingsniveau voor de verwerking van eventuele persoonsgegevens.</p>
+  </div>
+
+  <!-- VERWIJDERING COOKIES -->
+  <div class="privacy-blok">
+    <h2>Over verwijdering van cookies</h2>
+    <p>Meer informatie omtrent het in- en uitschakelen en het verwijderen van cookies kan je vinden in de instructies en/of met behulp van de Help-functie van jouw browser.<br>Sommige tracking cookies worden geplaatst door derden. Deze cookies kan je centraal verwijderen via Your Online Choices zodat ze niet bij een website van een derde teruggeplaatst worden.</p>
+  </div>
+
+  <!-- SOCIALE MEDIA -->
+  <div class="privacy-blok">
+    <h2>Andere functies voor sociale media</h2>
+    <p>Onze website(s) en mobiele app(s) bevatten functies voor sociale media zoals Twitter, Google+ en Pinterest, die hun eigen privacyverklaringen hebben.</p>
+    <p>Zorg ervoor dat je hun voorwaarden en de privacyverklaring goed doorleest voordat je persoonsgegevens invoert; wij aanvaarden geen verantwoordelijkheid of aansprakelijkheid voor deze functies.</p>
+  </div>
+
+  <!-- TOELATING -->
+  <div class="privacy-blok">
+    <h2>Toelating voor verwerking</h2>
+    <p>Als GCV Depoortere Dimitri je persoonsgegevens voor andere doeleinden wenst te verwerken of deze wenst door te geven aan organisaties of bedrijven waarmee de organisatie samenwerkt, dan zal GCV Depoortere Dimitri jou daarvoor je uitdrukkelijke toestemming vragen en kan je je ertegen verzetten.</p>
+  </div>
+
+  <!-- DUUR -->
+  <div class="privacy-blok">
+    <h2>Duur van de verwerking</h2>
+    <p>Deze gegevens worden door ons verwerkt voor de duur die noodzakelijk is in functie van de hierboven beschreven doeleinden.</p>
+  </div>
+
+  <!-- PROFILING -->
+  <div class="privacy-blok">
+    <h2>Profiling</h2>
+    <p>De verwerking van je persoonsgegevens omvat <strong>GEEN</strong> profiling. Dit impliceert dat wij op basis van de persoonsgegevens die je ons verstrekt <strong>NIET</strong> een profiel opbouwen over jou zodat wij je gepaste advertenties en voorstellen kunnen doen. Je zal op basis van dit profiel echter op geen enkele manier aan geautomatiseerde beslissing name worden onderworpen.</p>
+  </div>
+
+  <!-- JE RECHTEN -->
+  <div class="privacy-blok">
+    <h2>Je rechten</h2>
+    <ul>
+      <li>
+        <strong>Recht op toegang en inzage</strong><br>
+        Je hebt het recht de gegevens die GCV Depoortere Dimitri over jou geregistreerd heeft, in te zien en eventueel onnauwkeurige of onvolledige gegevens te laten corrigeren. Bovendien kan je op elk moment vragen dat jouw persoonsgegevens uit het bestand van GCV Depoortere Dimitri verwijderd worden.
+      </li>
+      <li>
+        <strong>Recht op uitschrijven, verbeteren, aanvullen en verwijderen van persoonsgegevens</strong><br>
+        Je bent vrij om je persoonsgegevens al dan niet mee te delen aan de Website.<br><br>
+        Als je de informatie van GCV Depoortere Dimitri niet (meer) wilt ontvangen, kun je je ten allen tijde uitschrijven (via unsubscribe) of per e-mail <a href="mailto:info@dimcreations.be">info@dimcreations.be</a> of per brief Zandvleugestraat 1, 8755 Wingene met vermelding van jouw naam, postadres en e-mail.<br><br>
+        Je krijgt wel nog steeds dienst gerelateerde berichten van ons, zoals belangrijke informatie over het gebruik van onze producten of diensten.<br><br>
+        Daarnaast heb je steeds het recht om ons te verzoeken je persoonsgegevens te verbeteren, aan te vullen of te verwijderen. Je erkent dat bij weigering van mededeling of verzoek tot verwijdering van persoonsgegevens, bepaalde diensten en producten niet leverbaar zijn.
+      </li>
+      <li>
+        <strong>Recht van verzet</strong><br>
+        Je beschikt eveneens over een recht van verzet tegen de verwerking van je persoonsgegevens om ernstige en legitieme redenen.<br><br>
+        Daarnaast heb je steeds het recht om je te verzetten tegen het gebruik van persoonsgegevens voor doeleinden van direct marketing; in dergelijk geval hoef je geen redenen op te geven.
+      </li>
+      <li>
+        <strong>Recht van vrije gegevensoverdracht</strong><br>
+        Je beschikt over het recht om je persoonsgegevens die door ons verwerkt worden in gestructureerde, gangbare en machine leesbare vorm te verkrijgen en/of aan andere verantwoordelijken over te dragen.
+      </li>
+      <li>
+        <strong>Recht van intrekking van de toestemming</strong><br>
+        Voor zover de verwerking gebaseerd is op je voorafgaande toestemming, beschik je over het recht om die toestemming in te trekken.
+      </li>
+      <li>
+        <strong>Uitoefening van je rechten</strong><br>
+        Je kunt je rechten uitoefenen door ons daartoe te contacteren, hetzij per e-mail naar <a href="mailto:info@dimcreations.be">info@dimcreations.be</a>, per post Zandvleugestraat 1, 8755 Wingene of door gebruik te maken van het onderdeel Contact op de Website.
+      </li>
+      <li>
+        <strong>Recht om klacht in te dienen</strong><br>
+        Indien je een klacht hebt, vragen we je om rechtstreeks contact op te nemen met GCV Depoortere Dimitri via <a href="mailto:info@dimcreations.be">info@dimcreations.be</a> of <a href="tel:+32477686750">0477 68 67 50</a>. Wij zullen alle mogelijke maatregelen treffen om aan je bezorgdheid i.v.m. de verwerking van persoonsgegevens tegemoet te komen.<br><br>
+        Je beschikt over het recht om een klacht in te dienen bij de Belgische Privacycommissie:<br><br>
+        Commissie voor de Bescherming van de Persoonlijke Levenssfeer, Drukpersstraat 35, 1000 Brussel, Tel +32 (0)2 274 48 00, Fax +32 (0)2 274 48 35, e-mail: <a href="mailto:commission@privacycommission.be">commission@privacycommission.be</a>.<br><br>
+        Dit laat een voorziening voor een burgerlijke rechtbank onverlet.<br><br>
+        Indien je schade zou lijden als gevolg van de verwerking van je persoonsgegevens, kun je een vordering tot schadevergoeding instellen.
+      </li>
+    </ul>
+  </div>
+
+  <!-- BEVEILIGING -->
+  <div class="privacy-blok">
+    <h2>Beveiliging</h2>
+    <p>Wij hebben veiligheidsmaatregelen ontwikkeld die aangepast zijn op technisch en organisatorisch vlak, om de vernietiging, het verlies, de vervalsing, de wijziging, de niet-toegestane toegang of de kennisgeving per vergissing aan derden van persoonsgegevens verzameld te vermijden alsook elke andere niet toegestane verwerking van deze gegevens.</p>
+    <p>In geen geval kunnen wij aansprakelijk worden geacht voor enige directe of indirecte schade die voortvloeit uit een foutief of onrechtmatig gebruik door een derde van de persoonsgegevens.</p>
+    <p>Je dient te allen tijde de veiligheidsvoorschriften na te leven, onder andere door elke niet toegestane toegang tot je login en paswoord te voorkomen. Je bent dus als enige verantwoordelijk voor het gebruik dat wordt gemaakt van <a href="https://www.dimcreations.be">https://www.dimcreations.be/</a> vanop je computer, IP-adres en van je identificatiegegevens, alsook voor de vertrouwelijkheid ervan.</p>
+  </div>
+
+  <!-- TOEGANG TOT GEGEVENS -->
+  <div class="privacy-blok">
+    <h2>Toegang tot gegevens</h2>
+    <p>Teneinde je persoonsgegevens te kunnen verwerken, verlenen wij toegang tot je persoonsgegevens aan onze werknemers.</p>
+    <p>Wij garanderen een gelijkaardig niveau van bescherming door contractuele verplichtingen tegenstelbaar te maken aan deze werknemers en aangestelden, die gelijkaardig zijn aan deze Privacyverklaring.</p>
+    <p>Om de door jou gewenste diensten en producten te kunnen aanbieden, kunnen we jouw persoonsgegevens delen met de aanbieders van de uiteindelijke reisdiensten i.k.v. pakketreizen.</p>
+    <p>We werken bovendien samen met zorgvuldig geselecteerde leveranciers die bepaalde taken voor ons uitvoeren (vb. IT).</p>
+    <p>Als we persoonsgegevens met andere organisaties delen, verplichten we hen deze gegevens veilig te bewaren en verbieden we hen de gegevens te gebruiken voor hun eigen marketingdoeleinden.</p>
+    <p>We delen enkel de persoonsgegevens die onze leveranciers en partners nodig hebben om jou en/of ons hun diensten te kunnen aanbieden met als rechtsgrond de uitvoering van een overeenkomst die door jou en/of ons werd gevraagd.</p>
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="privacy-blok">
+    <h2>Copyright</h2>
+    <p>Van deze website mogen op geen enkele wijze teksten of afbeeldingen worden gereproduceerd zonder de uitdrukkelijke toestemming van GCV Depoortere Dimitri.</p>
+  </div>
+
+  <!-- WIJZIGINGEN -->
+  <div class="privacy-blok">
+    <h2>Wijzigingen aan deze Verklaring</h2>
+    <p>Deze Verklaring vervangt alle vorige versies. We kunnen deze Verklaring te allen tijde aanpassen dus gelieve regelmatig op onze website(s) te kijken om te controleren of er updates zijn. Als het om belangrijke wijzigingen gaat, zullen we een duidelijke mededeling op onze website(s) plaatsen en, indien van toepassing, de wijzigingen ook elektronisch meedelen.</p>
+  </div>
+
+  <!-- TERUG KNOP ONDERAAN -->
+  <button class="terug-knop" onclick="history.back()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Terug naar vorige pagina
+  </button>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-boven">
+    <div class="footer-merk">
+      <a href="index.html" class="footer-logo-tekst">
+        <img src="https://raw.githubusercontent.com/Mats-RideOn/DimCreations/main/fotos/logodim.png" alt="DIM Creations">
+      </a>
+      <p>Belettering op maat &#8212; Zichtbaar vakwerk sinds 1995.</p>
+    </div>
+    <div class="footer-kolom">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#over">Over Ons</a></li>
+        <li><a href="index.html#werk">Werk</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-kolom">
+      <h4>Diensten</h4>
+      <ul>
+        <li><a href="index.html#werk">Voertuigbelettering</a></li>
+        <li><a href="index.html#werk">Carwrapping</a></li>
+        <li><a href="index.html#werk">Spandoeken</a></li>
+        <li><a href="index.html#werk">Gevelreclame</a></li>
+        <li><a href="index.html#werk">Zeefdruk</a></li>
+        <li><a href="index.html#werk">Vlaggen &amp; Banners</a></li>
+      </ul>
+    </div>
+    <div class="footer-kolom">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></li>
+        <li><a href="tel:+32477686750">+32 477 686 750</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-onder">
+    <p>&#169; 2026 DIM Creations &#8212; Alle rechten voorbehouden</p>
+    <a href="privacy.html">Privacyverklaring</a>
+  </div>
+</footer>
+
+<script>
+// Mobiel menu
+function toggleMenu() {
+  document.getElementById('mobielmenu').classList.toggle('open');
+}
+
+// Scroll reveal
+var waarnemer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add('zichtbaar');
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.privacy-blok').forEach(function(el) {
+  waarnemer.observe(el);
+});
+</script>
 </body>
 </html>
