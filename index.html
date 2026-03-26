@@ -93,21 +93,18 @@ nav {
 
 /* ── HERO ────────────────────────────────────────────────── */
 #home {
-  min-height: 100vh;
   position: relative; 
   overflow: hidden;
   display: flex; 
   flex-direction: column;
-  justify-content: center;
   padding: 0 !important;  
   margin: 0 !important;  
 }
 .hero-foto {
-  position: absolute; inset: 0;
-  background-image: url('https://raw.githubusercontent.com/Mats-RideOn/DIMCreations/main/fotos/heroachtergrondfoto.jpg');
+  position: relative;
+  height: 50vh;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   /*
     HERO ACHTERGROND FOTO:
     Vervang de gradient door:
@@ -126,14 +123,9 @@ nav {
 }
 
 .hero-inhoud {
-  position: absolute;
-  bottom: 125px;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  padding: 0 5vw;
-  max-width: 100%;
-  margin: 0 auto;
+  position: relative;
+  background: var(--zwart);
+  padding: 52px 5vw;
   text-align: center;
   animation: opKomen .9s ease both;
 }
@@ -182,11 +174,8 @@ nav {
 
 /* ── SCROLLENDE TEKST BAND ───────────────────────────────── */
 .tekst-band {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
+  position: relative;
+  background: var(--zwart);
   overflow: hidden;
   border-top: 1px solid rgba(255,255,255,.08);
   border-bottom: 1px solid rgba(255,255,255,.08);
