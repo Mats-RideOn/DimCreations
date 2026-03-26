@@ -293,16 +293,11 @@ h2.sectie-titel {
 .dk-foto-basis  { opacity: 1; }
 .dk-foto-detail { opacity: 0; }
 
-/* Donkere overlay — altijd zichtbaar, lichter bij hover */
+/* Lichte overlay — normaal */
 .dk-achtergrond::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10,10,8,.82) 0%,
-    rgba(10,10,8,.45) 50%,
-    rgba(10,10,8,.28) 100%
-  );
+  background: rgba(10,10,8,.15);
   transition: background .45s ease;
   z-index: 1;
 }
@@ -339,20 +334,7 @@ h2.sectie-titel {
   padding: 28px 32px;
 }
 .dk-nummer { display: none; }
-.dk-naam {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(20px, 2.4vw, 32px);
-  font-weight: 300; color: var(--wit);
-  line-height: 1.1; margin: 0;
-  transition: transform .4s ease;
-}
-.dk-pijl {
-  display: inline-block;
-  font-size: 20px; color: var(--rood);
-  margin-top: 8px;
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity .4s ease, transform .4s ease;
+
 }
 .dk-lijn {
   display: block;
@@ -366,15 +348,8 @@ h2.sectie-titel {
 .dienst-kaart:hover .dk-foto-basis  { opacity: 0; }
 .dienst-kaart:hover .dk-foto-detail { opacity: 1; }
 .dienst-kaart:hover .dk-achtergrond::after {
-  background: linear-gradient(
-    to top,
-    rgba(10,10,8,.75) 0%,
-    rgba(10,10,8,.25) 50%,
-    rgba(10,10,8,.12) 100%
-  );
+  background: rgba(10,10,8,.0);
 }
-.dienst-kaart:hover .dk-naam   { transform: translateY(-4px); }
-.dienst-kaart:hover .dk-pijl   { opacity: 1; transform: translateX(0); }
 .dienst-kaart:hover .dk-lijn   { width: 40px; }
 
 /* Actief (touch) staat */
