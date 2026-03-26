@@ -233,6 +233,7 @@ h2.sectie-titel {
 #werk {
   background: var(--zwart);
   padding: 0;
+  scroll-margin-top: 64px;
 }
 
 .werk-header {
@@ -926,7 +927,7 @@ footer {
 window.addEventListener('scroll', function() {
   var band = document.querySelector('.tekst-band');
   var hero = document.getElementById('home');
-  if (window.scrollY > hero.offsetHeight) {
+  if (window.scrollY > 1) {
     band.style.position = 'relative';
     band.style.bottom = 'auto';
     document.body.style.paddingBottom = '0';
