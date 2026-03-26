@@ -532,10 +532,12 @@ footer {
 @media (max-width: 600px) {
   section { padding: 68px 5vw; }
   .hero-knoppen { flex-direction: column; }
+  .streepje { display: none; }
  .diensten-menu { 
   grid-template-columns: 1fr; 
   gap: 4px; 
-  padding: 0 5vw 48px; }
+  padding: 0 5vw 48px;
+ }
 .dienst-kaart {
   aspect-ratio: 4/3;}
   .veld-rij { grid-template-columns: 1fr; }
@@ -595,7 +597,7 @@ footer {
   </div>
 
   <div class="hero-inhoud">
-    <h1>Belettering op maat &#8212; <em>Zichtbaar vakwerk sinds 1995.</em></h1>
+    <h1>Belettering op maat <span class="streepje"> &#8212; </span><em>Zichtbaar vakwerk sinds 1995.</em></h1>
     <div class="hero-knoppen">
       <a href="#werk" class="knop-rood">Bekijk ons werk</a>
       <a href="#contact" class="knop-leeg">Neem contact op</a>
