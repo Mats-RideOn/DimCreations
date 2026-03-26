@@ -430,12 +430,10 @@ h2.sectie-titel {
 .contact-lijst { list-style: none; }
 .contact-lijst li {
   display: flex; gap: 13px; align-items: center;
-  padding: 13px 0;
+  padding: 13px 0; border-bottom: 1px solid var(--rand);
   font-size: 14px; color: var(--zwart);
 }
-.contact-lijst li:first-child { border-top: 1px solid var(--rand); }
 .contact-lijst li:last-child { border-bottom: none; }
-.contact-lijst li:first-child { border-top: 1px solid var(--rand); }
 .contact-lijst .icoon { font-size: 16px; flex-shrink: 0;}
 .contact-lijst a { color: var(--rood); text-decoration: none; }
 .contact-lijst a:hover { text-decoration: underline; }
@@ -814,17 +812,17 @@ footer {
       <h2 class="sectie-titel">Contact</h2>
       <p style="margin-bottom: 24px;">Heeft u een vraag? Een concreet project voor ogen?</p>
       <p>Contacteer ons via onderstaand formulier voor een vrijblijvend gesprek.</p>
-      <p style="margin-bottom: 24px>We beantwoorden uw vraag zo snel mogelijk.</p>
-     <ul class="contact-lijst">
-  <li>
-    <span class="icoon">&#9993;&#65039;</span>
-    <div><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></div>
-  </li>
-  <li>
-    <span class="icoon">&#128222;</span>
-    <div><a href="tel:+32 477 686 750">+32 477 686 750</a></div>
-  </li>
-</ul>
+      <p>We beantwoorden uw vraag zo snel mogelijk.</p>
+      <ul class="contact-lijst">
+        <li>
+          <span class="icoon">&#128222;</span>
+          <div><a href="tel:+32 477 686 750">+32 477 686 750</a></div>
+        </li>
+       <li>
+      <span class="icoon">&#9993;&#65039;</span>
+      <div><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></div>
+      </li>
+      </ul>
     </div>
     <div class="onzichtbaar">
       <form class="formulier" onsubmit="verstuurFormulier(event)">
@@ -897,12 +895,14 @@ footer {
       </ul>
     </div>
     <div class="footer-kolom">
-  <h4>Contact</h4>
-  <ul>
-    <li><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></li>
-    <li><a href="tel:+32 477 686 750">+32 477 686 750</a></li>
-  </ul>
-</div>
+      <h4>Contact</h4>
+      <ul>
+        <li>
+      <div><a href="mailto:info@dimcreations.be">info@dimcreations.be</a></div>
+      <div><a href="tel:+32 477 686 750">+32 477 686 750</a></div>
+      </li>
+      </ul>
+    </div>
   </div>
   <div class="footer-onder">
     <p>&#169; 2026 DIM Creations &#8212; Alle rechten voorbehouden</p>
