@@ -29,6 +29,7 @@ body {
   color: var(--zwart);
   line-height: 1.7;
   overflow-x: hidden;
+  padding-bottom: 60px;
 }
 
 /* ── NAVIGATIE ───────────────────────────────────────────── */
@@ -104,7 +105,7 @@ nav {
   position: relative;
   height: 50vh;
   background-size: cover;
-  background-position: center;
+  background-position: scroll;
   /*
     HERO ACHTERGROND FOTO:
     Vervang de gradient door:
@@ -183,6 +184,11 @@ nav {
   padding: 20px 0;
   white-space: nowrap;
   overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
 }
 .tekst-band-inner {
   display: inline-block;
@@ -540,6 +546,17 @@ footer {
   .veld-rij { grid-template-columns: 1fr; }
   .footer-boven { flex-direction: column; }
   .stats { gap: 20px; }
+}
+  @media (max-width: 600px) {
+  body {
+    padding-bottom: 55px;
+  }
+}
+  @media (max-width: 600px) {
+  .hero-foto {
+    height: 35vh;
+    background-attachment: scroll;
+  }
 }
 </style>
 </head>
@@ -905,7 +922,20 @@ footer {
   window.addEventListener('scroll', function() {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
 });
-
+  
+window.addEventListener('scroll', function() {
+  var band = document.querySelector('.tekst-band');
+  var hero = document.getElementById('home');
+  if (window.scrollY > hero.offsetHeight) {
+    band.style.position = 'relative';
+    band.style.bottom = 'auto';
+    document.body.style.paddingBottom = '0';
+  } else {
+    band.style.position = 'fixed';
+    band.style.bottom = '0';
+    document.body.style.paddingBottom = '60px';
+  }
+});
 // Mobiel menu
 function toggleMenu() {
   document.getElementById('mobielmenu').classList.toggle('open');
