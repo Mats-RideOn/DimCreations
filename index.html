@@ -127,7 +127,7 @@ nav {
 .hero-inhoud {
   position: relative;
   background: var(--zwart);
-  padding: 52px 5vw;
+  padding: 72px 5vw 80px;
   text-align: center;
   animation: opKomen .9s ease both;
 }
@@ -176,7 +176,7 @@ nav {
 
 /* ── SCROLLENDE TEKST BAND ───────────────────────────────── */
 .tekst-band {
-  position: relative;
+  position: fixed;
   background: var(--rood);
   border-top: none;
   border-bottom: none;
@@ -237,7 +237,7 @@ h2.sectie-titel {
 }
 
 .werk-header {
-  padding: 72px 5vw 40px;
+  padding: 100px 5vw 40px;
 }
 .werk-header .sectie-label { color: rgba(206,17,38,.8); }
 .werk-header h2.sectie-titel { color: var(--wit); }
@@ -924,19 +924,7 @@ footer {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
 });
   
-window.addEventListener('scroll', function() {
-  var band = document.querySelector('.tekst-band');
-  var hero = document.getElementById('home');
-  if (window.scrollY > 1) {
-    band.style.position = 'relative';
-    band.style.bottom = 'auto';
-    document.body.style.paddingBottom = '0';
-  } else {
-    band.style.position = 'fixed';
-    band.style.bottom = '0';
-    document.body.style.paddingBottom = '60px';
-  }
-});
+
 // Mobiel menu
 function toggleMenu() {
   document.getElementById('mobielmenu').classList.toggle('open');
