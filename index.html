@@ -934,6 +934,10 @@ function toggleMenu() {
 // Diensten kaarten — touch interactie voor mobiel
 document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
   kaart.addEventListener('click', function() {
+    if (!('ontouchstart' in window)) return;
+    document.querySelectorAll('.dienst-kaart').forEach(function(k) {
+      if (k !== kaart) k.classList.remove('touch-actief');
+    });
     kaart.classList.toggle('touch-actief');
   });
 });
