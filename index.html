@@ -533,50 +533,21 @@ footer {
   .diensten-menu { grid-template-columns: repeat(2, 1fr); gap: 4px; }
   .dienst-kaart { border-right: none; }
 }
-@media (max-width: 700px) {
+
+@media (max-width: 600px) {
   section { padding: 68px 5vw; }
-  .hero-knoppen { flex-direction: row; }
-  .knop-rood, .knop-leeg {
-  width: auto;
-  justify-content: center;
-  padding: 10px 16px;
-  font-size: 9px;
-}
-  justify-content: center;
-}
+  body { padding-bottom: 55px; }
+  .hero-foto { height: 35vh; background-attachment: scroll; }
+  .hero-knoppen { flex-direction: row; align-items: center; }
+  .knop-rood, .knop-leeg { width: auto; justify-content: center; padding: 10px 16px; font-size: 9px; }
+  .hero-inhoud h1 { display: flex; flex-direction: column; align-items: center; white-space: normal; }
   .streepje { display: none; }
-  .hero-knoppen {
-  align-items: center;
-}
-  .nav-logo img {
-  height: 80px !important;
-  }
-  .hero-inhoud h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
- .diensten-menu { 
-  grid-template-columns: 1fr; 
-  gap: 4px; 
-  padding: 0 5vw 48px;
- }
-.dienst-kaart {
-  aspect-ratio: 4/3;}
+  .nav-logo img { height: 35px !important; }
+  .diensten-menu { grid-template-columns: 1fr; gap: 4px; padding: 0 5vw 48px; }
+  .dienst-kaart { aspect-ratio: 4/3; }
   .veld-rij { grid-template-columns: 1fr; }
   .footer-boven { flex-direction: column; }
   .stats { gap: 20px; }
-}
-  @media (max-width: 600px) {
-  body {
-    padding-bottom: 55px;
-  }
-}
-  @media (max-width: 600px) {
-  .hero-foto {
-    height: 35vh;
-    background-attachment: scroll;
-  }
 }
 </style>
 </head>
