@@ -933,8 +933,18 @@ function toggleMenu() {
 
 // Diensten kaarten — touch interactie voor mobiel
 document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
-  kaart.addEventListener('touchstart', function(e) {
-    e.preventDefault();
+  var touchMoved = false;
+
+  kaart.addEventListener('touchmove', function() {
+    touchMoved = true;
+  });
+
+  kaart.addEventListener('touchend', function() {
+    if (touchMoved) {
+      touchMoved = false;
+      return;
+    }
+    touchMoved = false;
     var isActief = kaart.classList.contains('touch-actief');
     document.querySelectorAll('.dienst-kaart').forEach(function(k) {
       k.classList.remove('touch-actief');
@@ -942,7 +952,7 @@ document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
     if (!isActief) {
       kaart.classList.add('touch-actief');
     }
-  }, { passive: false });
+  });
 });
   
 // Scroll reveal
