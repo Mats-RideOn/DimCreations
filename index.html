@@ -359,14 +359,14 @@ h2.sectie-titel {
 }
 
 /* Hover staat */
-.dienst-kaart:hover .dk-foto-basis  { opacity: 0; }
-.dienst-kaart:hover .dk-foto-detail { opacity: 1; }
-.dienst-kaart:hover .dk-achtergrond::after {
-  background: rgba(10,10,8,.0);
+@media (hover: hover) {
+  .dienst-kaart:hover .dk-foto-basis  { opacity: 0; }
+  .dienst-kaart:hover .dk-foto-detail { opacity: 1; }
+  .dienst-kaart:hover .dk-achtergrond::after { background: rgba(10,10,8,.0); }
+  .dienst-kaart:hover .dk-naam   { transform: translateY(-4px); }
+  .dienst-kaart:hover .dk-pijl   { opacity: 1; transform: translateX(0); }
+  .dienst-kaart:hover .dk-lijn   { width: 40px; }
 }
-.dienst-kaart:hover .dk-naam   { transform: translateY(-4px); }
-.dienst-kaart:hover .dk-pijl   { opacity: 1; transform: translateX(0); }
-.dienst-kaart:hover .dk-lijn   { width: 40px; }
 
 /* Actief (touch) staat */
 .dienst-kaart.touch-actief .dk-foto-basis  { opacity: 0; }
@@ -933,8 +933,7 @@ function toggleMenu() {
 
 // Diensten kaarten — touch interactie voor mobiel
 document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
-  kaart.addEventListener('click', function(e) {
-    if (window.matchMedia('(hover: hover)').matches) return;
+  kaart.addEventListener('click', function() {
     var wasActief = kaart.classList.contains('touch-actief');
     document.querySelectorAll('.dienst-kaart').forEach(function(k) {
       k.classList.remove('touch-actief');
