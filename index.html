@@ -933,12 +933,15 @@ function toggleMenu() {
 
 // Diensten kaarten — touch interactie voor mobiel
 document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
-  kaart.addEventListener('click', function() {
-    if (!('ontouchstart' in window)) return;
+  kaart.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    var isActief = kaart.classList.contains('touch-actief');
     document.querySelectorAll('.dienst-kaart').forEach(function(k) {
-      if (k !== kaart) k.classList.remove('touch-actief');
+      k.classList.remove('touch-actief');
     });
-    kaart.classList.toggle('touch-actief');
+    if (!isActief) {
+      kaart.classList.add('touch-actief');
+    }
   });
 });
   
