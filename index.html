@@ -935,12 +935,11 @@ function toggleMenu() {
 document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
   kaart.addEventListener('pointerup', function(e) {
     if (e.pointerType === 'mouse') return;
-    if (kaart.classList.contains('touch-actief')) {
-      kaart.classList.remove('touch-actief');
-    } else {
-      document.querySelectorAll('.dienst-kaart').forEach(function(k) {
-        k.classList.remove('touch-actief');
-      });
+    var wasActief = kaart.classList.contains('touch-actief');
+    document.querySelectorAll('.dienst-kaart').forEach(function(k) {
+      k.classList.remove('touch-actief');
+    });
+    if (!wasActief) {
       kaart.classList.add('touch-actief');
     }
   });
