@@ -933,8 +933,8 @@ function toggleMenu() {
 
 // Diensten kaarten — touch interactie voor mobiel
 document.querySelectorAll('.dienst-kaart').forEach(function(kaart) {
-  kaart.addEventListener('pointerup', function(e) {
-    if (e.pointerType === 'mouse') return;
+  kaart.addEventListener('click', function(e) {
+    if (window.matchMedia('(hover: hover)').matches) return;
     var wasActief = kaart.classList.contains('touch-actief');
     document.querySelectorAll('.dienst-kaart').forEach(function(k) {
       k.classList.remove('touch-actief');
