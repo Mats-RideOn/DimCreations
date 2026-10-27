@@ -573,23 +573,12 @@ footer {
   .contact-raster { grid-template-columns: 1fr; gap: 40px; }
   .diensten-menu { grid-template-columns: repeat(2, 1fr); gap: 4px; }
   .dienst-kaart { border-right: none; }
-  .hero-foto img {
-  display: none;
 }
-}
+
 @media (max-width: 600px) {
   section { padding: 68px 5vw; }
   body { padding-bottom: 55px; }
-  .hero-foto {
-    height: auto;
-    background: none;
-    background-attachment: scroll;
-  }
-  .hero-foto img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+  .hero-foto { height: 35vh; background-attachment: scroll; }
   .hero-knoppen { flex-direction: row; align-items: center; }
   .knop-rood, .knop-leeg { width: auto; justify-content: center; padding: 10px 16px; font-size: 9px; }
   .hero-inhoud h1 { display: flex; flex-direction: column; align-items: center; white-space: normal; }
@@ -603,9 +592,9 @@ footer {
   .dienst-kaart[data-index="05"],
   .dienst-kaart[data-index="09"],
   .dienst-kaart[data-index="12"] {
-    grid-column: span 1;
-    aspect-ratio: 4/3;
-  }
+  grid-column: span 1;
+  aspect-ratio: 4/3;
+}
 }
 </style>
 </head>
@@ -642,8 +631,11 @@ footer {
 ═══════════════════════════════════════════════ -->
 <section id="home">
   <div class="hero-foto">
-  <img src="https://raw.githubusercontent.com/Mats-RideOn/DIMCreations/main/fotos/achtergrondafbeelding.png" alt="DIM Creations">
-</div>
+    <!--
+      ACHTERGROND FOTO — verwijder de gradient in CSS en zet hier:
+      <img src="fotos/hero.jpg" style="width:100%;height:100%;object-fit:cover;opacity:.45;">
+    -->
+  </div>
 
   <div class="hero-inhoud">
     <h1>Belettering op maat <span class="streepje"> &#8212; </span><em>Zichtbaar vakwerk sinds 1995.</em></h1>
