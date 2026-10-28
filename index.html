@@ -133,14 +133,7 @@ nav {
 }
 .hero-foto {
   position: relative;
-  width: 100%;
   height: auto;
-  background-image: url('https://raw.githubusercontent.com/Mats-RideOn/DIMCreations/main/fotos/achtergrondafbeelding.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: var(--zwart);
-  padding-bottom: 33.41%;
 }
 .hero-inhoud {
   position: relative;
@@ -566,7 +559,6 @@ footer {
 @media (max-width: 600px) {
   section { padding: 68px 5vw; }
   body { padding-bottom: 55px; }
-  .hero-foto { padding-bottom: 33.41%; background-attachment: scroll; }
   .hero-knoppen { flex-direction: row; align-items: center; }
   .knop-rood, .knop-leeg { width: auto; justify-content: center; padding: 10px 16px; font-size: 9px; }
   .hero-inhoud h1 { display: flex; flex-direction: column; align-items: center; white-space: normal; }
@@ -619,10 +611,7 @@ footer {
 ═══════════════════════════════════════════════ -->
 <section id="home">
   <div class="hero-foto">
-    <!--
-      ACHTERGROND FOTO — verwijder de gradient in CSS en zet hier:
-      <img src="fotos/hero.jpg" style="width:100%;height:100%;object-fit:cover;opacity:.45;">
-    -->
+  <img src="https://raw.githubusercontent.com/Mats-RideOn/DIMCreations/main/fotos/achtergrondafbeelding.png" alt="DIM Creations" style="width:100%;display:block;height:auto;">
   </div>
 
   <div class="hero-inhoud">
