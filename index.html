@@ -133,26 +133,14 @@ nav {
 }
 .hero-foto {
   position: relative;
-  height: 50vh;
-  background-size: cover;
-  background-position: scroll;
-  /*
-    HERO ACHTERGROND FOTO:
-    Vervang de gradient door:
-    background-image: url('fotos/hero.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  */
-}
-  
-.hero-foto {
-  position: relative;
-  height: 50vh;
+  width: 100%;
+  height: 65vh;
+  min-height: 400px;
   background-image: url('https://raw.githubusercontent.com/Mats-RideOn/DIMCreations/main/fotos/achtergrondafbeelding.png');
-  background-size: cover;
-  background-position: center;
-}
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #181816;
 
 .hero-inhoud {
   position: relative;
@@ -578,7 +566,16 @@ footer {
 @media (max-width: 600px) {
   section { padding: 68px 5vw; }
   body { padding-bottom: 55px; }
-  .hero-foto { height: 35vh; background-attachment: scroll; }
+  
+.hero-foto {
+  height: 50vh;
+  min-height: 320px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
   .hero-knoppen { flex-direction: row; align-items: center; }
   .knop-rood, .knop-leeg { width: auto; justify-content: center; padding: 10px 16px; font-size: 9px; }
   .hero-inhoud h1 { display: flex; flex-direction: column; align-items: center; white-space: normal; }
